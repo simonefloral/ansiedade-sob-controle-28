@@ -3,10 +3,25 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
-import { CheckCircle2, Brain, Heart, Users, Briefcase, Moon, Sparkles, Activity, BookOpen, Clock, ShieldCheck, Star } from "lucide-react";
+import {
+  CheckCircle2,
+  XCircle,
+  BookOpen,
+  ListChecks,
+  MessageSquareQuote,
+  NotebookPen,
+  Zap,
+  Flower2,
+  ShieldCheck,
+  Clock,
+  Star,
+  Sparkles,
+  HeartPulse,
+  Brain,
+  Compass,
+} from "lucide-react";
 import ebookCover from "@/assets/ebook-cover.png";
 import heroBg from "@/assets/hero-bg.jpg";
 
@@ -14,31 +29,102 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Protocolo de Controle da Ansiedade — E-book" },
-      { name: "description", content: "Descubra 7 práticas comprovadas para cada uma das 7 principais ansiedades. Um protocolo passo a passo para reencontrar a calma." },
+      { title: "Protocolo de Controle da Ansiedade — 7 práticas para 7 ansiedades" },
+      {
+        name: "description",
+        content:
+          "Guia prático com 7 técnicas para controlar a crise no momento em que ela surge. Sem depender de ninguém. Acesso imediato por R$ 47.",
+      },
       { property: "og:title", content: "Protocolo de Controle da Ansiedade" },
-      { property: "og:description", content: "7 práticas para cada uma das 7 principais ansiedades. Reencontre sua serenidade." },
+      {
+        property: "og:description",
+        content: "7 práticas para cada uma das 7 principais ansiedades. Reencontre sua serenidade.",
+      },
     ],
   }),
 });
 
-const anxieties = [
-  { icon: Brain, title: "Ansiedade Generalizada", desc: "A preocupação constante que rouba seu presente." },
-  { icon: Users, title: "Ansiedade Social", desc: "O medo de julgamento que isola e paralisa." },
-  { icon: Briefcase, title: "Ansiedade de Performance", desc: "A pressão de sempre ter que entregar mais." },
-  { icon: Heart, title: "Ansiedade Antecipatória", desc: "O futuro imaginado que assombra o agora." },
-  { icon: Moon, title: "Ansiedade Noturna", desc: "Os pensamentos que invadem sua hora de descanso." },
-  { icon: Activity, title: "Ansiedade Somática", desc: "Quando o corpo grita o que a mente cala." },
-  { icon: Sparkles, title: "Ansiedade Existencial", desc: "As grandes perguntas que tiram o seu chão." },
+const forYou = [
+  "Sente que a ansiedade aparece “do nada” e te derruba",
+  "Tem medo de ter crise em público, no trabalho, no trânsito, em casa",
+  "Quer algo prático, que você consiga aplicar mesmo com a mente acelerada",
+  "Quer parar de depender de terceiros para se acalmar",
+  "Busca um caminho que inclua equilíbrio emocional + espiritualidade (de forma simples)",
+];
+
+const notForYou = [
+  "Você procura promessas milagrosas ou “cura instantânea”",
+  "Você quer terceirizar sua melhora sem colocar nada em prática",
 ];
 
 const benefits = [
-  "49 práticas testadas e fáceis de aplicar no dia a dia",
-  "Protocolo específico para cada tipo de ansiedade",
-  "Técnicas baseadas em neurociência e terapias contemporâneas",
-  "Exercícios de 5 minutos para crises agudas",
-  "Linguagem acessível, sem jargões clínicos",
-  "Diário de acompanhamento incluso",
+  "Controlar a crise no momento em que ela surge",
+  "Interromper o ciclo de pensamentos que alimenta a ansiedade",
+  "Entender seus gatilhos com clareza",
+  "Criar autonomia emocional para reduzir a frequência das crises",
+  "Viver com mais leveza, segurança interna e conexão espiritual",
+];
+
+const deliverables = [
+  {
+    icon: BookOpen,
+    title: "E-book — Protocolo de controle da Ansiedade",
+    desc: "Um caminho estruturado que guia você da confusão emocional ao controle interno. Um “mapa” para seguir quando a ansiedade tentar assumir o comando.",
+  },
+  {
+    icon: ListChecks,
+    title: "Checklists e Guias Rápidos",
+    desc: "O que fazer durante uma crise (passo a passo direto) e a rotina diária anti-ansiedade. Quando a crise vier, você não vai precisar “pensar”. Você só vai seguir.",
+  },
+  {
+    icon: MessageSquareQuote,
+    title: "Scripts e Prompts Mentais",
+    desc: "Frases para interromper pensamentos negativos, comandos mentais de controle emocional e exercícios auto-guiados para retomar o eixo.",
+  },
+  {
+    icon: NotebookPen,
+    title: "Diário Emocional Estruturado",
+    desc: "Transforme sentimentos confusos em clareza, reação automática em consciência e crise repetida em direção e prevenção.",
+  },
+];
+
+const bonuses = [
+  {
+    icon: Zap,
+    tag: "Bônus 1",
+    title: "Checklist: Identificação Rápida de Gatilhos",
+    desc: "Reconheça em poucos minutos o que está gerando sua ansiedade. Saia do modo automático e enxergue o padrão por trás das crises.",
+  },
+  {
+    icon: Flower2,
+    tag: "Bônus 2",
+    title: "Guia: O Poder dos Florais",
+    desc: "Como os florais atuam no estado emocional, qual usar para cada tipo de ansiedade, receitas para momentos de tensão e combinações para um cuidado contínuo.",
+  },
+];
+
+const transformations = [
+  { icon: Brain, text: "Controle emocional" },
+  { icon: HeartPulse, text: "Mais qualidade nos relacionamentos" },
+  { icon: Sparkles, text: "Clareza mental no dia a dia" },
+  { icon: Compass, text: "Mais leveza e segurança interna" },
+  { icon: Flower2, text: "Conexão espiritual sem complicar" },
+  { icon: ShieldCheck, text: "Liberdade de não viver refém da ansiedade" },
+];
+
+const testimonials = [
+  {
+    name: "Carla Mendes",
+    role: "34 anos",
+    text:
+      "Eu tinha crises quase todos os dias e me sentia completamente sem controle. Depois que comecei a usar o Protocolo de controle da Ansiedade, consigo interromper as crises em poucos minutos. É prático, direto e realmente funciona. Melhor investimento que fiz para minha saúde mental.",
+  },
+  {
+    name: "Juliana Costa",
+    role: "29 anos",
+    text:
+      "O que mais gostei foi a simplicidade. Não são técnicas complicadas. Quando a ansiedade vem agora, eu sigo o passo a passo e consigo me acalmar muito mais rápido. O diário emocional também me ajudou a entender meus gatilhos. Recomendo demais!",
+  },
 ];
 
 function Index() {
@@ -68,23 +154,22 @@ function Index() {
         <div className="container relative mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
           <div className="animate-fade-up">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-card/70 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-primary backdrop-blur">
-              <Sparkles className="h-3.5 w-3.5" /> E-book Exclusivo
+              <Sparkles className="h-3.5 w-3.5" /> Página de Vendas
             </span>
             <h1 className="mt-6 text-4xl leading-[1.05] text-foreground md:text-6xl">
-              Protocolo de Controle da{" "}
+              Protocolo de controle da{" "}
               <span className="text-gradient-gold italic">Ansiedade</span>
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground md:text-xl">
-              <strong className="text-foreground">7 práticas</strong> para cada uma das{" "}
-              <strong className="text-foreground">7 principais ansiedades</strong>. Um caminho claro
-              para silenciar o ruído interno e reencontrar sua serenidade.
+            <p className="mt-5 text-lg text-foreground/80 md:text-xl">
+              <strong>7 práticas</strong> para cada uma das <strong>7 principais ansiedades</strong>.
+            </p>
+            <p className="mt-5 text-base text-muted-foreground md:text-lg">
+              Sem depender de outra pessoa. Sem se sentir refém da própria mente. Com um passo a passo
+              simples e prático para usar no exato momento em que a crise aparece.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button size="lg" onClick={scrollToCta} className="h-12 px-8 text-base shadow-[var(--shadow-gold)]">
-                Quero meu exemplar
-              </Button>
-              <Button size="lg" variant="outline" onClick={scrollToCta} className="h-12 px-8 text-base">
-                Ver o que está dentro
+                Quero acessar o método agora
               </Button>
             </div>
             <div className="mt-8 flex items-center gap-6 text-sm text-muted-foreground">
@@ -94,7 +179,7 @@ function Index() {
                     <Star key={i} className="h-4 w-4 fill-[var(--gold)] text-[var(--gold)]" />
                   ))}
                 </div>
-                <span>+2.000 leitores</span>
+                <span>Avaliado por leitores</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <ShieldCheck className="h-4 w-4 text-primary" /> Garantia 7 dias
@@ -106,7 +191,7 @@ function Index() {
             <div className="absolute h-72 w-72 rounded-full bg-[var(--gold)]/20 blur-3xl md:h-96 md:w-96" />
             <img
               src={ebookCover}
-              alt="Capa do e-book Protocolo de Controle da Ansiedade"
+              alt="Capa do e-book Protocolo de controle da Ansiedade"
               width={1024}
               height={1024}
               className="relative w-full max-w-md animate-float drop-shadow-2xl"
@@ -118,30 +203,106 @@ function Index() {
 
       {/* PROBLEMA */}
       <section className="px-6 py-20 md:py-28">
-        <div className="container mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl md:text-5xl">Você reconhece estes sinais?</h2>
-          <p className="mt-6 text-lg text-muted-foreground">
-            O coração acelera sem motivo. Os pensamentos giram em loop. O sono não vem,
-            ou vem cheio de inquietação. Tarefas simples parecem montanhas. Você não está
-            sozinho — e <strong className="text-foreground">existe um caminho de volta para a calma</strong>.
+        <div className="container mx-auto max-w-3xl">
+          <h2 className="text-center text-3xl md:text-5xl">
+            Quando a crise vem, você não precisa “ser forte”. Você precisa de{" "}
+            <span className="text-gradient-gold italic">direção</span>.
+          </h2>
+          <p className="mt-8 text-lg text-muted-foreground">
+            Se você já passou por uma crise de ansiedade, você sabe como é:
+          </p>
+          <ul className="mt-6 space-y-4 text-foreground/90">
+            <li className="flex gap-3">
+              <HeartPulse className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+              <span>O corpo entra em alerta (coração acelerado, aperto no peito, tremor, falta de ar).</span>
+            </li>
+            <li className="flex gap-3">
+              <Brain className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+              <span>A mente dispara (pensamentos catastróficos, medo de perder o controle, sensação de perigo).</span>
+            </li>
+            <li className="flex gap-3">
+              <Sparkles className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+              <span>E quanto mais você tenta “se acalmar”, pior parece ficar…</span>
+            </li>
+          </ul>
+          <p className="mt-8 text-lg text-foreground">
+            O problema não é falta de força.{" "}
+            <strong>É falta de um plano simples para seguir</strong> — mesmo quando sua cabeça está em caos.
           </p>
         </div>
       </section>
 
-      {/* AS 7 ANSIEDADES */}
+      {/* O QUE É */}
       <section className="bg-secondary/40 px-6 py-20 md:py-28">
-        <div className="container mx-auto max-w-6xl">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="text-xs font-semibold uppercase tracking-widest text-primary">O Protocolo</span>
-            <h2 className="mt-3 text-3xl md:text-5xl">As 7 ansiedades que tratamos</h2>
-            <p className="mt-5 text-muted-foreground">
-              Cada tipo de ansiedade tem origens, gatilhos e respostas específicas. Por isso, cada uma
-              recebe um conjunto único de 7 práticas no e-book.
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center">
+            <span className="text-xs font-semibold uppercase tracking-widest text-primary">O método</span>
+            <h2 className="mt-3 text-3xl md:text-5xl">
+              O que é o Protocolo de controle da Ansiedade
+            </h2>
+            <p className="mt-6 text-lg text-muted-foreground">
+              Um guia prático com <strong className="text-foreground">7 técnicas</strong>, organizadas em
+              um passo a passo, para você:
             </p>
           </div>
 
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {anxieties.map(({ icon: Icon, title, desc }, i) => (
+          <ul className="mx-auto mt-10 grid max-w-2xl gap-4">
+            {benefits.map((b) => (
+              <li key={b} className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 shadow-[var(--shadow-soft)]">
+                <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary" />
+                <span className="text-foreground/90">{b}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p className="mx-auto mt-10 max-w-2xl text-center text-muted-foreground">
+            Você não vai encontrar aqui “textão motivacional” ou teoria que você não consegue aplicar.
+            É um método para usar <strong className="text-foreground">na vida real</strong>, nos dias
+            difíceis, quando você mais precisa.
+          </p>
+        </div>
+      </section>
+
+      {/* PARA QUEM É */}
+      <section className="px-6 py-20 md:py-28">
+        <div className="container mx-auto max-w-5xl">
+          <h2 className="text-center text-3xl md:text-5xl">Para quem é (e para quem não é)</h2>
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            <Card className="border-primary/20 bg-card p-8 shadow-[var(--shadow-soft)]">
+              <h3 className="text-2xl text-primary">É para você se…</h3>
+              <ul className="mt-6 space-y-4">
+                {forYou.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
+                    <span className="text-foreground/90">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+            <Card className="border-destructive/20 bg-card p-8 shadow-[var(--shadow-soft)]">
+              <h3 className="text-2xl text-destructive">Não é para você se…</h3>
+              <ul className="mt-6 space-y-4">
+                {notForYou.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <XCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-destructive" />
+                    <span className="text-foreground/90">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* ENTREGÁVEIS */}
+      <section className="bg-secondary/40 px-6 py-20 md:py-28">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-widest text-primary">Entregáveis</span>
+            <h2 className="mt-3 text-3xl md:text-5xl">O que você recebe ao entrar</h2>
+          </div>
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            {deliverables.map(({ icon: Icon, title, desc }) => (
               <Card
                 key={title}
                 className="group border-border/60 bg-card p-7 shadow-[var(--shadow-soft)] transition-[var(--transition-smooth)] hover:-translate-y-1 hover:shadow-[var(--shadow-elegant)]"
@@ -149,82 +310,90 @@ function Index() {
                 <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-glow text-primary-foreground">
                   <Icon className="h-6 w-6" />
                 </div>
-                <div className="mb-2 text-xs font-medium uppercase tracking-wider text-gold">
-                  0{i + 1}
-                </div>
                 <h3 className="text-xl">{title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
+                <p className="mt-3 text-muted-foreground">{desc}</p>
               </Card>
             ))}
-            <Card className="flex flex-col items-center justify-center border-2 border-dashed border-primary/30 bg-transparent p-7 text-center">
-              <div className="text-5xl text-gradient-gold">7×7</div>
-              <p className="mt-2 text-sm font-medium text-foreground">49 práticas</p>
-              <p className="text-xs text-muted-foreground">protocolos completos</p>
-            </Card>
           </div>
         </div>
       </section>
 
-      {/* O QUE VOCÊ RECEBE */}
+      {/* BÔNUS */}
       <section className="px-6 py-20 md:py-28">
-        <div className="container mx-auto grid max-w-6xl items-center gap-16 md:grid-cols-2">
-          <div className="relative">
-            <div className="absolute -inset-8 rounded-3xl bg-gradient-to-br from-secondary to-accent/50 blur-2xl" />
-            <img
-              src={ebookCover}
-              alt="E-book aberto"
-              width={1024}
-              height={1024}
-              loading="lazy"
-              className="relative mx-auto w-full max-w-sm rotate-3 drop-shadow-xl"
-            />
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center">
+            <span className="inline-block rounded-full bg-[var(--gold)]/15 px-4 py-1 text-xs font-bold uppercase tracking-widest text-[var(--gold-foreground)]">
+              🎁 Bônus exclusivos
+            </span>
+            <h2 className="mt-4 text-3xl md:text-5xl">Para acelerar seus resultados</h2>
           </div>
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-widest text-primary">O que você leva</span>
-            <h2 className="mt-3 text-3xl md:text-5xl">Tudo o que está dentro</h2>
-            <ul className="mt-8 space-y-4">
-              {benefits.map((b) => (
-                <li key={b} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-0.5 h-6 w-6 flex-shrink-0 text-primary" />
-                  <span className="text-foreground/90">{b}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-10 flex items-center gap-6 rounded-2xl border border-border bg-card p-5">
-              <BookOpen className="h-10 w-10 text-primary" />
-              <div>
-                <p className="font-semibold text-foreground">+ 180 páginas</p>
-                <p className="text-sm text-muted-foreground">PDF + ePub para qualquer dispositivo</p>
-              </div>
-              <div className="ml-auto flex items-center gap-2 text-sm text-muted-foreground">
-                <Clock className="h-4 w-4" /> Acesso imediato
-              </div>
-            </div>
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            {bonuses.map(({ icon: Icon, tag, title, desc }) => (
+              <Card
+                key={title}
+                className="relative overflow-hidden border-2 border-[var(--gold)]/30 bg-card p-8 shadow-[var(--shadow-gold)]"
+              >
+                <div className="absolute right-0 top-0 rounded-bl-2xl bg-gradient-to-br from-[var(--gold)] to-[oklch(0.72_0.15_70)] px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[var(--gold-foreground)]">
+                  {tag}
+                </div>
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--gold)] to-[oklch(0.72_0.15_70)] text-[var(--gold-foreground)]">
+                  <Icon className="h-7 w-7" />
+                </div>
+                <h3 className="text-2xl">{title}</h3>
+                <p className="mt-3 text-muted-foreground">{desc}</p>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* AUTORIDADE / DEPOIMENTOS */}
+      {/* DEPOIMENTOS */}
       <section className="bg-primary px-6 py-20 text-primary-foreground md:py-28">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center">
-            <h2 className="text-3xl md:text-5xl">Quem já encontrou a calma</h2>
+            <h2 className="text-3xl md:text-5xl">O que estão dizendo</h2>
+            <p className="mt-4 opacity-80">
+              Sobre o Protocolo de controle da Ansiedade
+            </p>
           </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {[
-              { name: "Mariana S.", role: "Professora", text: "Em duas semanas, minhas crises noturnas diminuíram drasticamente. As práticas são simples e funcionam." },
-              { name: "Rafael L.", role: "Engenheiro", text: "Finalmente entendi que tenho mais de um tipo de ansiedade. Os protocolos específicos mudaram tudo." },
-              { name: "Camila P.", role: "Psicóloga", text: "Recomendo aos meus pacientes como material complementar. Linguagem clara e técnicas bem fundamentadas." },
-            ].map((t) => (
-              <Card key={t.name} className="border-white/10 bg-white/5 p-6 text-primary-foreground backdrop-blur">
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            {testimonials.map((t) => (
+              <Card key={t.name} className="border-white/10 bg-white/5 p-8 text-primary-foreground backdrop-blur">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-4 w-4 fill-[var(--gold)] text-[var(--gold)]" />
                   ))}
                 </div>
-                <p className="mt-4 text-sm leading-relaxed opacity-90">"{t.text}"</p>
-                <p className="mt-5 text-sm font-semibold">{t.name}</p>
-                <p className="text-xs opacity-70">{t.role}</p>
+                <p className="mt-5 leading-relaxed opacity-90">"{t.text}"</p>
+                <p className="mt-6 font-semibold">{t.name}</p>
+                <p className="text-sm opacity-70">{t.role}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TRANSFORMAÇÃO */}
+      <section className="px-6 py-20 md:py-28">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-5xl">
+              O que muda quando você aplica o protocolo
+            </h2>
+            <p className="mt-6 text-lg text-muted-foreground">
+              Você não está comprando “um e-book”. Você está adquirindo:
+            </p>
+          </div>
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {transformations.map(({ icon: Icon, text }) => (
+              <Card
+                key={text}
+                className="flex items-center gap-4 border-border/60 bg-card p-6 shadow-[var(--shadow-soft)]"
+              >
+                <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-glow text-primary-foreground">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <span className="font-medium text-foreground">{text}</span>
               </Card>
             ))}
           </div>
@@ -237,18 +406,23 @@ function Index() {
           <Card className="overflow-hidden border-2 border-[var(--gold)]/30 bg-card p-10 shadow-[var(--shadow-elegant)] md:p-14">
             <div className="text-center">
               <span className="inline-block rounded-full bg-[var(--gold)]/15 px-4 py-1 text-xs font-bold uppercase tracking-widest text-[var(--gold-foreground)]">
-                Oferta de Lançamento
+                Acesso imediato
               </span>
               <h2 className="mt-5 text-3xl md:text-5xl">
-                Comece sua jornada para a <span className="text-gradient-gold italic">calma</span>
+                Comece sua jornada para o{" "}
+                <span className="text-gradient-gold italic">controle interno</span>
               </h2>
-              <div className="mt-8 flex items-baseline justify-center gap-3">
-                <span className="text-lg text-muted-foreground line-through">R$ 97</span>
-                <span className="text-6xl font-bold text-primary">R$ 27</span>
-              </div>
-              <p className="mt-2 text-sm text-muted-foreground">pagamento único · acesso vitalício</p>
 
-              <form onSubmit={handleSubmit} className="mx-auto mt-10 flex max-w-md flex-col gap-3">
+              <div className="mt-8 flex items-baseline justify-center gap-3">
+                <span className="text-6xl font-bold text-primary">R$ 47</span>
+              </div>
+              <p className="mt-2 text-sm text-muted-foreground">à vista ou parcelado</p>
+
+              <div className="mx-auto mt-6 max-w-md rounded-xl border border-border bg-secondary/40 p-4 text-sm text-muted-foreground">
+                📥 Download disponível por 1 ano na plataforma. Após baixar, o material é seu para sempre.
+              </div>
+
+              <form onSubmit={handleSubmit} className="mx-auto mt-8 flex max-w-md flex-col gap-3">
                 <Input
                   type="email"
                   required
@@ -258,44 +432,41 @@ function Index() {
                   className="h-12 text-base"
                 />
                 <Button type="submit" size="lg" className="h-12 text-base shadow-[var(--shadow-gold)]">
-                  Quero o e-book agora
+                  Quero o Protocolo por R$ 47
                 </Button>
               </form>
 
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
-                <span className="flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-primary" /> Garantia 7 dias</span>
-                <span className="flex items-center gap-1.5"><Clock className="h-4 w-4 text-primary" /> Acesso imediato</span>
-                <span className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-primary" /> Pagamento seguro</span>
+                <span className="flex items-center gap-1.5">
+                  <ShieldCheck className="h-4 w-4 text-primary" /> Garantia 7 dias
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Clock className="h-4 w-4 text-primary" /> Acesso imediato
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 className="h-4 w-4 text-primary" /> Pagamento seguro
+                </span>
+              </div>
+
+              {/* GARANTIA */}
+              <div className="mt-12 rounded-2xl border border-primary/20 bg-secondary/30 p-6 text-left">
+                <div className="flex items-center gap-3">
+                  <ShieldCheck className="h-8 w-8 text-primary" />
+                  <h3 className="text-xl">🔐 Garantia incondicional de 7 dias</h3>
+                </div>
+                <p className="mt-3 text-muted-foreground">
+                  Você tem 7 dias para acessar o conteúdo e ver se faz sentido pra você. Se não fizer,
+                  é só pedir reembolso. <strong className="text-foreground">Sem perguntas. Sem risco.</strong>
+                </p>
               </div>
             </div>
           </Card>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="px-6 py-20 md:py-28">
-        <div className="container mx-auto max-w-3xl">
-          <h2 className="text-center text-3xl md:text-5xl">Perguntas frequentes</h2>
-          <Accordion type="single" collapsible className="mt-12">
-            {[
-              { q: "Esse e-book substitui terapia?", a: "Não. O Protocolo é um material complementar, educativo e prático. Casos clínicos sempre devem ser acompanhados por um profissional de saúde mental." },
-              { q: "Em quanto tempo verei resultados?", a: "Muitos leitores relatam alívio nas primeiras semanas, especialmente com as técnicas para crises agudas. A consistência é o que transforma." },
-              { q: "Como recebo o e-book?", a: "Após a confirmação do pagamento, o link de download chega no seu e-mail em até 5 minutos. Você terá acesso vitalício." },
-              { q: "Funciona para qualquer idade?", a: "O conteúdo é indicado a partir dos 16 anos. As práticas são seguras e adaptáveis a diferentes contextos de vida." },
-              { q: "E se eu não gostar?", a: "Você tem 7 dias de garantia incondicional. Basta enviar um e-mail e devolvemos 100% do valor, sem perguntas." },
-            ].map((item, i) => (
-              <AccordionItem key={i} value={`item-${i}`}>
-                <AccordionTrigger className="text-left text-base">{item.q}</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">{item.a}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
-
       <footer className="border-t border-border bg-card px-6 py-10">
         <div className="container mx-auto max-w-6xl text-center text-sm text-muted-foreground">
-          <p className="font-serif text-lg text-foreground">Protocolo de Controle da Ansiedade</p>
+          <p className="font-serif text-lg text-foreground">Protocolo de controle da Ansiedade</p>
           <p className="mt-2">© {new Date().getFullYear()} · Todos os direitos reservados</p>
         </div>
       </footer>
