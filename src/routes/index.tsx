@@ -22,7 +22,7 @@ import {
   Brain,
   Compass,
 } from "lucide-react";
-import ebookCover from "@/assets/ebook-cover.png";
+import ebookCover from "@/assets/ebook-cover.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
 
 export const Route = createFileRoute("/")({
