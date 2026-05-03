@@ -11,7 +11,6 @@ import {
   BookOpen,
   ListChecks,
   MessageSquareQuote,
-  NotebookPen,
   Zap,
   Flower2,
   ShieldCheck,
@@ -81,11 +80,6 @@ const deliverables = [
     title: "Scripts e Prompts Mentais",
     desc: "Frases para interromper pensamentos negativos, comandos mentais de controle emocional e exercícios auto-guiados para retomar o eixo.",
   },
-  {
-    icon: NotebookPen,
-    title: "Diário Emocional Estruturado",
-    desc: "Transforme sentimentos confusos em clareza, reação automática em consciência e crise repetida em direção e prevenção.",
-  },
 ];
 
 const bonuses = [
@@ -110,21 +104,6 @@ const transformations = [
   { icon: Compass, text: "Mais leveza e segurança interna" },
   { icon: Flower2, text: "Conexão espiritual sem complicar" },
   { icon: ShieldCheck, text: "Liberdade de não viver refém da ansiedade" },
-];
-
-const testimonials = [
-  {
-    name: "Carla Mendes",
-    role: "34 anos",
-    text:
-      "Eu tinha crises quase todos os dias e me sentia completamente sem controle. Depois que comecei a usar o Protocolo de controle da Ansiedade, consigo interromper as crises em poucos minutos. É prático, direto e realmente funciona. Melhor investimento que fiz para minha saúde mental.",
-  },
-  {
-    name: "Juliana Costa",
-    role: "29 anos",
-    text:
-      "O que mais gostei foi a simplicidade. Não são técnicas complicadas. Quando a ansiedade vem agora, eu sigo o passo a passo e consigo me acalmar muito mais rápido. O diário emocional também me ajudou a entender meus gatilhos. Recomendo demais!",
-  },
 ];
 
 function Index() {
@@ -341,32 +320,6 @@ function Index() {
                 </div>
                 <h3 className="text-2xl">{title}</h3>
                 <p className="mt-3 text-muted-foreground">{desc}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* DEPOIMENTOS */}
-      <section className="bg-primary px-6 py-20 text-primary-foreground md:py-28">
-        <div className="container mx-auto max-w-5xl">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-5xl">O que estão dizendo</h2>
-            <p className="mt-4 opacity-80">
-              Sobre o Protocolo de controle da Ansiedade
-            </p>
-          </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
-            {testimonials.map((t) => (
-              <Card key={t.name} className="border-white/10 bg-white/5 p-8 text-primary-foreground backdrop-blur">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-[var(--gold)] text-[var(--gold)]" />
-                  ))}
-                </div>
-                <p className="mt-5 leading-relaxed opacity-90">"{t.text}"</p>
-                <p className="mt-6 font-semibold">{t.name}</p>
-                <p className="text-sm opacity-70">{t.role}</p>
               </Card>
             ))}
           </div>
