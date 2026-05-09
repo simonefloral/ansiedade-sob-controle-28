@@ -59,7 +59,7 @@ function protocolo_ansiedade_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting( 'protocolo_checkout_url', array(
-		'default'           => '#cta',
+		'default'           => 'https://pay.kiwify.com.br/TE1COlz',
 		'sanitize_callback' => 'esc_url_raw',
 	) );
 	$wp_customize->add_control( 'protocolo_checkout_url', array(
