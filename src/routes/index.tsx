@@ -376,19 +376,11 @@ function Index() {
                 📥 Download disponível por 1 ano na plataforma. Após baixar, o material é seu para sempre.
               </div>
 
-              <form onSubmit={handleSubmit} className="mx-auto mt-8 flex max-w-md flex-col gap-3">
-                <Input
-                  type="email"
-                  required
-                  placeholder="Seu melhor e-mail"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="h-12 text-base"
-                />
-                <Button type="submit" size="lg" className="h-12 text-base shadow-[var(--shadow-gold)]">
+              <div className="mx-auto mt-8 flex max-w-md flex-col gap-3">
+                <Button onClick={goToCheckout} size="lg" className="h-12 text-base shadow-[var(--shadow-gold)]">
                   Quero o Protocolo por R$ 47
                 </Button>
-              </form>
+              </div>
 
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
                 <span className="flex items-center gap-1.5">
