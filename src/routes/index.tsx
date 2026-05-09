@@ -148,7 +148,7 @@ function Index() {
               simples e prático para usar no exato momento em que a crise aparece.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button size="lg" onClick={scrollToCta} className="h-12 px-8 text-base shadow-[var(--shadow-gold)]">
+              <Button size="lg" onClick={goToCheckout} className="h-12 px-8 text-base shadow-[var(--shadow-gold)]">
                 Quero acessar o método agora
               </Button>
             </div>
