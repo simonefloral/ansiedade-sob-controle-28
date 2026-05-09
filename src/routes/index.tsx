@@ -116,8 +116,9 @@ function Index() {
     setEmail("");
   };
 
-  const scrollToCta = () => {
-    document.getElementById("cta")?.scrollIntoView({ behavior: "smooth" });
+  const CHECKOUT_URL = "https://pay.kiwify.com.br/TE1COlz";
+  const goToCheckout = () => {
+    window.open(CHECKOUT_URL, "_blank", "noopener,noreferrer");
   };
 
   return (
