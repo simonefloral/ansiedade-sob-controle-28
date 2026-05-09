@@ -133,9 +133,6 @@ function Index() {
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
         <div className="container relative mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2">
           <div className="animate-fade-up">
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-card/70 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-primary backdrop-blur">
-              <Sparkles className="h-3.5 w-3.5" /> Página de Vendas
-            </span>
             <h1 className="mt-6 text-4xl leading-[1.05] text-foreground md:text-6xl">
               Protocolo de controle da{" "}
               <span className="text-gradient-gold italic">Ansiedade</span>
